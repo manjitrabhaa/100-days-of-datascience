@@ -38,8 +38,8 @@ This repository serves as both a **project vault** and a **learning framework** 
 
 | Day | Project Title                             | Domain             | Status   |
 |-----|-------------------------------------------|--------------------|----------|
-| 1   | PAN/ID Card Tampering Detection           | Image Forensics    | ✅ Done   |
-| 2   | Exploratory Data Analysis: Indian Census  | Demographics/EDA   | 🔄 Upcoming |
+| 1   | ID Card Tampering Detection           | Image Forensics    | ✅ Done   |
+| 2   | Dog Breed Predidction                 |   Predidction      | ✅ Done   |
 | 3   | Income Classification Using ML            | Economics/ML       | 🔄 Upcoming |
 | ... | ...                                       | ...                | ...      |
 | 100 | AI-Powered Data Science Portfolio Site    | Fullstack AI       | ⏳ Pending |
