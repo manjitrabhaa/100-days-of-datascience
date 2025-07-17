@@ -3,5 +3,5 @@ imutils
 Keras
 opencv-python
 Pillow
-tensorflow==2.13.0
+tensorflow
 scikit-image
