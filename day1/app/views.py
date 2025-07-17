@@ -12,6 +12,8 @@ app.config['INITIAL_FILE_UPLOADS'] = 'app/static/uploads'
 app.config['EXISTNG_FILE'] = 'app/static/original'
 app.config['GENERATED_FILE'] = 'app/static/generated'
 
+ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png'}
+
 # Route to home page
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -30,9 +32,18 @@ def index():
         uploaded_image = Image.open(file_upload).resize((250,160))
         uploaded_image.save(os.path.join(app.config['INITIAL_FILE_UPLOADS'], 'image.jpg'))
 
+        # Ensure the original image folder exists
+        original_folder = app.config['EXISTNG_FILE']
+        os.makedirs(original_folder, exist_ok=True)
+
+        # Ensure the original image exists
+        original_image_path = os.path.join(original_folder, 'image.jpg')
+        if not os.path.isfile(original_image_path):
+            return render_template('index.html', pred="Original image not found. Please add 'image.jpg' to app/static/original.")
+
         # Resize and save the original image to ensure both uploaded and original matches in size
-        original_image = Image.open(os.path.join(app.config['EXISTNG_FILE'], 'image.jpg')).resize((250,160))
-        original_image.save(os.path.join(app.config['EXISTNG_FILE'], 'image.jpg'))
+        original_image = Image.open(original_image_path).resize((250,160))
+        original_image.save(original_image_path)
 
         # Read uploaded and original image as array
         original_image = cv2.imread(os.path.join(app.config['EXISTNG_FILE'], 'image.jpg'))

@@ -1,6 +1,6 @@
 from flask import Flask
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 env = app.config.get("ENV", "production")
 if env == "production":
